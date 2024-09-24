@@ -6,8 +6,8 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'sample.settings')
 
 #Used 'cel' instead of 'app', like in the documentation, to avoid any confusion since this project already has a module named 'app'.
 cel = Celery('sample', 
-             broker='redis://',
-             backend='redis://',
+             broker='redis://localhost:6379/0',
+             backend='redis://localhost:6379/1',
              include=['sample.tasks'])
 
 # the configuration object to child processes.
