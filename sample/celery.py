@@ -6,7 +6,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'sample.settings')
 
 #Used 'cel' instead of 'app', like in the documentation, to avoid any confusion since this project already has a module named 'app'.
 cel = Celery('sample', 
-             broker='amqp://localhost:5672/0',
+             broker='amqp://localhost:5672',
              backend='redis://localhost:6379/1',
              include=['sample.tasks'])
 
