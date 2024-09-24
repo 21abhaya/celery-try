@@ -5,7 +5,10 @@ from celery import Celery
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'sample.settings')
 
 #Used 'cel' instead of 'app', like in the documentation, to avoid any confusion since this project already has a module named 'app'.
-cel = Celery('sample')
+cel = Celery('sample', 
+             broker='redis://',
+             backend='redis://',
+             include=['sample.tasks'])
 
 # the configuration object to child processes.
 # - namespace='CELERY' means all celery-related configuration keys
