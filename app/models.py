@@ -21,7 +21,7 @@ class FileConversion(models.Model):
     original_filename = models.CharField(max_length=255)
     original_file_size = models.IntegerField(help_text="File size in bytes", null=True, blank=True) 
     original_file_type = models.CharField(max_length=50)
-    converted_file_type = models.CharField(max_length=50)
+    # converted_file_type = models.CharField(max_length=50)
     conversion_type = models.CharField(max_length=10, choices=CONVERSION_TYPES)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='PENDING')
     created_at = models.DateTimeField(auto_now_add=True)
