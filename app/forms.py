@@ -3,11 +3,19 @@ from django.core.exceptions import ValidationError
 from .models import FileConversion
 
 class FileConversionForm(ModelForm):
+    def clean_original_file(self):
+        original_file = self.cleaned_data['original_file']
+        if not original_file:
+            raise ValidationError("Please upload a file.")
+        return original_file
+
     def clean_original_file_type(self):
-        data = self.cleaned_data['original_file_type']
-        if data not in ['PDF', 'JPG', 'PNG', 'SVG']:
-            raise ValidationError("Invalid file type")
-        return data
+        original_file_type = self.cleaned_data['original_file_type']
+        if not original_file_type:
+            raise ValidationError("Please enter the file format.")
+        if original_file_type not in dict(FileConversion.CONVERSION_TYPES):
+            raise ValidationError("Invalid conversion format.")
+        return original_file_type
     
     class Meta:
         model = FileConversion
