@@ -7,3 +7,5 @@ class FileConversionForm(ModelForm):
     class Meta:
         model = FileConversion
         fields = ['original_file', 'original_file_type', 'conversion_type',]
+        help_texts = {
+            'original_file': 'Upload a file to convert',}
