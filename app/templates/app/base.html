@@ -36,7 +36,26 @@
   </div>
 </nav>
 <body>
-  <form action="" method="post" enctype="multipart/form-data">
+  <div class="container mt-5">
+    <h2 class="mb-4">File Conversion</h2>
+    <form action="{% url 'convert' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="file" class="form-label">Select File</label>
+            <input type="file" class="form-control" id="file" name="file" required>
+        </div>
+        <div class="mb-3">
+            <label for="original_type" class="form-label">Original File Type</label>
+            <input type="text" class="form-control" id="original_type" name="original_type" placeholder="e.g. pdf, docx" required>
+        </div>
+        <div class="mb-3">
+            <label for="target_type" class="form-label">Convert To</label>
+            <input type="text" class="form-control" id="target_type" name="target_type" placeholder="e.g. jpg, png" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Convert</button>
+    </form>
+</div>
+
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </html>
