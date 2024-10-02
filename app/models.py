@@ -20,7 +20,7 @@ class FileConversion(models.Model):
     converted_file = models.FileField(upload_to='converted_files/', null=True, blank=True)
     original_filename = models.CharField(max_length=255, null=True, blank=True)
     original_file_size = models.IntegerField(help_text="File size in bytes", null=True, blank=True) 
-    original_file_type = models.CharField(max_length=50)
+    original_file_format = models.CharField(max_length=50)
     # converted_file_type = models.CharField(max_length=50)
     conversion_type = models.CharField(max_length=10, choices=CONVERSION_TYPES, null=True, blank=True)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='PENDING')
