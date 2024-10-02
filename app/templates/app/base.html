@@ -54,6 +54,18 @@
         </div>
         <button type="submit" class="btn btn-primary">Convert</button>
     </form>
+    
+    <div class="mt-5">
+        <h3>Converted File</h3>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ converted_file.name }}</h5>
+                <p class="card-text">File size: {{ converted_file.size|filesizeformat }}</p>
+                <a href="{{ converted_file.url }}" class="btn btn-success" download>Download Converted File</a>
+            </div>
+        </div>
+    </div>
+    
 </div>
 
 </body>
