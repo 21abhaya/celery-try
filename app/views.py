@@ -26,6 +26,11 @@ def file_upload(request):
                 conversion_type = form.cleaned_data['conversion_type'],
             )
 
+            context = {
+                'form': form,
+                'conversion_types': FileConversion.CONVERSION_TYPES,
+            }
+
         return render(request, 'app/base.html', {'form': form})
     else:
         form = FileConversionForm()
