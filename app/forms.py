@@ -1,3 +1,4 @@
+from django import forms
 from django.forms import ModelForm
 from django.core.exceptions import ValidationError
 from .models import FileConversion
@@ -23,3 +24,4 @@ class FileConversionForm(ModelForm):
         help_texts = {
             'original_file': 'Upload a file to convert',}
         
+    conversion_type = forms.ChoiceField(choices=FileConversion.CONVERSION_TYPES)
