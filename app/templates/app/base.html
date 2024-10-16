@@ -40,6 +40,7 @@
     <h2 class="mb-4">File Conversion</h2>
     <form action="{% url 'convert' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
+    <div style="display: flex; justify-content: space-between;"  >  
         <div class="mb-3">
             <label for="file" class="form-label">Select File</label>
             <div class="input-group">
@@ -59,7 +60,8 @@
                   <option value="{{ value }}">{{ label }}</option>
               {% endfor %}
           </select>
-      </div>      
+      </div>
+    </div>      
         <button type="submit" class="btn btn-primary">Convert</button>
     </form>
     
