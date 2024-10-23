@@ -10,10 +10,10 @@ class FileConversion(models.Model):
     ]
 
     CONVERSION_TYPES = [
-        ('PDF', 'Converts to PDF'),
-        ('JPG', 'Converts to  JPG'),
-        ('PNG', 'Converts to PNG'),
-        ('SVG', 'Converts to SVG'),
+        ('Converts to PDF', 'PDF'),
+        ('Converts to  JPG', 'JPG'),
+        ('Converts to PNG', 'PNG'),
+        ('Converts to SVG', 'SVG'),
     ]
 
     original_file = models.FileField(upload_to='original_files/')
@@ -22,7 +22,7 @@ class FileConversion(models.Model):
     original_file_size = models.IntegerField(help_text="File size in bytes", null=True, blank=True) 
     original_file_format = models.CharField(max_length=50)
     # converted_file_type = models.CharField(max_length=50)
-    conversion_type = models.CharField(max_length=10, choices=CONVERSION_TYPES, null=True, blank=True)
+    conversion_type = models.CharField(max_length=100, choices=CONVERSION_TYPES, null=True, blank=True)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='PENDING')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
