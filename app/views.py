@@ -31,7 +31,7 @@ def file_upload(request):
                 'conversion_type': FileConversion.CONVERSION_TYPES,
             }
 
-        return render(request, 'app/base.html', {'form': form})
+        return render(request, 'app/base.html', {'form': form, 'conversion_type': FileConversion.CONVERSION_TYPES})
     else:
         form = FileConversionForm()
-        return render(request, 'app/base.html', {'form': form})
+        return render(request, 'app/base.html', {'form': form, 'conversion_type': FileConversion.CONVERSION_TYPES})
