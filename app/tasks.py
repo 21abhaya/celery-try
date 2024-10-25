@@ -8,4 +8,3 @@ def convert_to_pdf(file_path, output_path):
     canvas.drawImage(file_path, 100, 100)
     canvas.save()
     return output_path
-    
