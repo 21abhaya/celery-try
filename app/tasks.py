@@ -4,7 +4,7 @@ from PIL import Image
 
 @shared_task 
 def convert_to_pdf(file_path, output_path):
-    canvas = canvas.Canvas(output_path)
-    canvas.drawImage(file_path, 100, 100)
-    canvas.save()
+    pdf_canvas = canvas.Canvas(output_path)
+    pdf_canvas.drawString(100, 100, file_path)
+    pdf_canvas.save()
     return output_path
