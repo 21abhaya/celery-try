@@ -7,6 +7,7 @@ from .tasks import convert_to_pdf
 import magic
 
 def file_upload(request):
+    context = {}
     if request.method == 'POST':
         form = FileConversionForm(request.POST, request.FILES)
         if form.is_valid():
@@ -40,12 +41,11 @@ def file_upload(request):
             # store task ID in session to check status
             request.session['task_id'] = task.id
 
-            context = {
-                'form': form,
-                'conversion_type': FileConversion.CONVERSION_TYPES,
+            context.update ({
+                'conversion_type': FileConversion.CONVERSION_TYPES,    
                 'task_id': task.id,
-            }
-
+            })
+        context['form'] = form
         return render(request, 'app/base.html', context)
     else:
         context = {
