@@ -48,5 +48,8 @@ def file_upload(request):
 
         return render(request, 'app/base.html', context)
     else:
-        form = FileConversionForm()
+        context = {
+            'form': FileConversionForm(),
+            'conversion_type': FileConversion.CONVERSION_TYPES,
+        }
         return render(request, 'app/base.html', context)
