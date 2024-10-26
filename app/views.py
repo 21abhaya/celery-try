@@ -8,7 +8,6 @@ import magic
 
 def file_upload(request):
     if request.method == 'POST':
-        
         form = FileConversionForm(request.POST, request.FILES)
         if form.is_valid():
             uploaded_file = form.cleaned_data['file']
@@ -40,7 +39,7 @@ def file_upload(request):
             )
             # store task ID in session to check status
             request.session['task_id'] = task.id
-            
+
             context = {
                 'form': form,
                 'conversion_type': FileConversion.CONVERSION_TYPES,
