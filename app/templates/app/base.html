@@ -73,8 +73,8 @@
         <div class="mb-3">
           <label for="target_type" class="form-label">Convert To</label>
           <select class="form-select" id="target_type" name="target_type" required>
-              <option value="" selected disabled>Choose conversion type</option>
-              {% for value, label in conversion_type %}
+              <option value="" selected disabled>Choose conversion type</option> 
+              {% for value, label in form.conversion_type.field.choices %}
                   <option value="{{ value }}">{{ label }}</option>
               {% endfor %}
           </select>
