@@ -27,13 +27,10 @@ def file_upload(request):
             
             #check for file type
             mime_types = [
-                            # Text Files
                             'text/csv',
                             'text/plain',
                             'text/html',
                             'text/xml',
-                            
-                            # Documents
                             'application/pdf',
                             'application/msword',
                             'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
