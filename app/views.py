@@ -21,12 +21,28 @@ def file_upload(request):
 
             #Reset file pointer
             uploaded_file.seek(0)
-            
+
             # generate output pdf path
             output_pdf = f'media/converted_files/{uploaded_file.name.split(".")[0]}.pdf'
             
-                #check for file extension
-            if file_format == 'csv':
+            #check for file type
+            mime_types = [
+                            # Text Files
+                            'text/csv',
+                            'text/plain',
+                            'text/html',
+                            'text/xml',
+                            
+                            # Documents
+                            'application/pdf',
+                            'application/msword',
+                            'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+                            'application/vnd.ms-excel',
+                            'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+                            'application/vnd.ms-powerpoint',
+                            'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+                        ] 
+            if file_format in mime_types:
                 # launch  celery task
                 task = convert_to_pdf.delay(
                 uploaded_file,
