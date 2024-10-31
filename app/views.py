@@ -21,23 +21,15 @@ def file_upload(request):
 
             #Reset file pointer
             uploaded_file.seek(0)
-
-            conversion_request = FileConversion.objects.create(
-                original_file=uploaded_file,
-                original_file_format=file_format,
-                conversion_type=form.cleaned_data['conversion_type'],
-            )
             
-            # validate the model
-            conversion_request.full_clean()
-            conversion_request.save()
-
             # generate output pdf path
             output_pdf = f'media/converted_files/{uploaded_file.name.split(".")[0]}.pdf'
-
-            # launch  celery task
-            task = convert_to_pdf.delay(
-                conversion_request.original_file.path,
+            
+                #check for file extension
+            if file_format == 'csv':
+                # launch  celery task
+                task = convert_to_pdf.delay(
+                uploaded_file,
                 output_pdf
             )
             # store task ID in session to check status
