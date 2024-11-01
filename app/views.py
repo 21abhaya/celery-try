@@ -18,6 +18,7 @@ def file_upload(request):
             # File type detection
             mime = magic.Magic(mime=True)
             file_format = mime.from_buffer(uploaded_file.read(1024))
+            print("file format:", file_format)
 
             #Reset file pointer
             uploaded_file.seek(0)
@@ -45,6 +46,9 @@ def file_upload(request):
                 uploaded_file,
                 output_pdf
             )
+            else:
+                return HttpResponse("File type not supported")
+            
             # store task ID in session to check status
             request.session['task_id'] = task.id
 
