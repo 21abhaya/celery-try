@@ -19,7 +19,8 @@ def file_upload(request):
             mime = magic.Magic(mime=True)
             file_format = mime.from_buffer(uploaded_file.read(1024))
             print("file format:", file_format)
-
+            form.save()
+            
             #Reset file pointer
             uploaded_file.seek(0)
 

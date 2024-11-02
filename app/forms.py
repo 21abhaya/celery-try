@@ -18,6 +18,12 @@ class FileConversionForm(ModelForm):
             raise ValidationError("Invalid conversion format.")
         return original_file_format
     
+    def clean_original_file_size(self):
+        original_file_size = self.cleaned_data['original_file_size']
+        if original_file_size > 1024 * 1024 *5:
+            raise ValidationError("File size should be less than 5MB.")
+        return original_file_size
+    
     class Meta:
         model = FileConversion
         fields = ['original_file', 'original_file_format', 'conversion_type',]
