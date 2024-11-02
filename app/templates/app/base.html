@@ -71,16 +71,17 @@
             <input type="text" class="form-control" id="original_type" name="original_type" placeholder="e.g. pdf, docx" required>
         </div> -->
         <div class="mb-3">
-          <label for="target_type" class="form-label">Convert To</label>
+          {% comment %}<label for="target_type" class="form-label">Convert To</label>
           <select class="form-select" id="target_type" name="target_type" required>
               <option value="">Choose conversion type</option> 
               {% for value, label in form.conversion_type.field.choices %}
                   <option value="{{ value }}">{{ label }}</option>
-              {% endfor %}
+              {% endfor %} {% endcomment %}
           </select>
+          <button type="submit" class="btn btn-outline-primary">Convert to PDF</button>
       </div>
     </div>      
-        <button type="submit" class="btn btn-primary">Convert</button>
+        <!-- <button type="submit" class="btn btn-primary">Convert to PDF</button> -->
     </form>
     
     <div class="mt-5">
@@ -89,7 +90,7 @@
             <div class="card-body">
                 <h5 class="card-title">{{ converted_file.name }}</h5>
                 <p class="card-text">File size: {{ converted_file.size|filesizeformat }}</p>
-                <a href="{{ converted_file.url }}" class="btn btn-success" download>Download Converted File</a>
+                <a href="{{ converted_file.url }}" class="btn btn-outline-success" download>Download Converted File</a>
             </div>
         </div>
     </div>
